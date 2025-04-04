@@ -1,83 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pishu's Story</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffebf0;
-            color: #333;
-            overflow-y: auto;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 20px;
-        }
-        .heart-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-        .heart-container:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        .hidden-content {
-            display: none;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        h1 {
-            color: #ff4d4d;
-        }
-        p {
-            font-size: 18px;
-        }
-    </style>
-    <script>
-        function openStory() {
-            let heart = document.querySelector('.heart-container');
-            let content = document.querySelector('.hidden-content');
-            heart.style.opacity = '0';
-            setTimeout(() => {
-                heart.style.display = 'none';
-                content.style.display = 'block';
-                setTimeout(() => {
-                    content.style.opacity = '1';
-                }, 100);
-            }, 500);
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pishu's Story</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffebf0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .lock-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lock-screen input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .lock-screen button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .heart-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      z-index: 999;
+      text-align: center;
+    }
+    .heart-container:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .hidden-content {
+      display: none;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    h1 {
+      color: #ff4d4d;
+    }
+    h2 {
+      color: #ff4d4d;
+    }
+    p {
+      font-size: 18px;
+    }
+    ul {
+      text-align: left;
+    }
+    li {
+      margin: 10px 0;
+      font-size: 17px;
+    }
+    img.memory-img {
+      width: 100%;
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .floating-heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 70%, 20% 100%, 0% 30%);
+      animation: float 5s infinite ease-in-out;
+      opacity: 0.3;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.2); }
+      100% { transform: translateY(0) scale(1); }
+    }
+  </style>
+  <script>
+    function openStory() {
+      const heart = document.querySelector('.heart-container');
+      const content = document.querySelector('.hidden-content');
+      heart.style.opacity = '0';
+      setTimeout(() => {
+        heart.style.display = 'none';
+        content.style.display = 'block';
+        setTimeout(() => {
+          content.style.opacity = '1';
+        }, 100);
+      }, 500);
+      document.getElementById('bg-music').play();
+    }
+
+    function checkPassword() {
+      const input = document.getElementById('password-input').value;
+      if (input === 'pishu2456') {
+        document.querySelector('.lock-screen').style.display = 'none';
+      } else {
+        alert('Wrong password! Try again.');
+      }
+    }
+
+    window.onload = () => {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('floating-heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+        heart.style.opacity = Math.random() * 0.4 + 0.2;
+        document.body.appendChild(heart);
+      }
+    }
+  </script>
 </head>
 <body>
-    <div class="heart-container" onclick="openStory()">
-        <img src="https://i.imgur.com/KmcMxwh.jpeg" alt="Open Letter" width="150">
-    </div>
-    
-    <div class="hidden-content">
-        <h1>Welcome to Pishu's Story ❤️</h1>
-        <p>This website is dedicated to our love and all our beautiful memories together.</p>
-        <h2>Our Special Memories</h2>
-        <ul>
-            <li><strong>23rd August 2021 - The Beginning of Us:</strong> We came together on this magical day at 6:57 PM. I had a crush on Piyu since childhood, from 5th standard, and she has always been the best. On this day, she confessed her feelings to me on Snapchat, and it was the most unforgettable moment of my life. I loved it, and from that moment, our beautiful journey began. But being the introverted guy I am, I simply replied with an 'OK' and a red heart. She still understood my feelings. ❤️</li>
-            <li><strong>31st August 2021 - My First 'I Love You':</strong> After a few troubling days, I finally gathered the courage to say 'I love you, Piyuji' for the first time and gifted her my first present. She loved it, and from then on, our journey became even more magical. We had countless moments of romance and fun together. 💖</li>
-            <li><strong>First Date - School Desk, 8 AM:</strong> Our first date was simple yet unforgettable. Sitting at our school desk, surrounded by the chirping of birds, especially the beautiful parrots, we shared a moment that felt like a scene from a love story. It was the start of something truly special. 🕊️💘</li>
-            <li><strong>Anniversary Celebration - Every Month on the 23rd:</strong> We celebrate our love every month on this special date, cherishing our journey and reliving our magical beginning. Every 23rd is a reminder of how deeply we love each other. 🎉❤️</li>
-            <li><strong>First Trip Together - 23rd September 2024:</strong> After four years of hustle, we finally met in Pune, in complete peace and happiness. From 4:27 PM to 7:00 PM, we had the most beautiful time together, cherishing every moment. It was a dream come true, filled with joy and love. ✨💑</li>
-            <li><strong>Countless Late-Night Talks:</strong> Every conversation brought us closer.</li>
-        </ul>
-        
-        <img src="https://i.imgur.com/uvnD5gh.jpeg" alt="Our Memory" width="300">
-    </div>
+  <audio id="bg-music" src="https://docs.google.com/uc?export=download&id=14rQVdJNq81fW12iwCkmQc7A09XrTc3hR" loop></audio>
+
+  <div class="lock-screen">
+    <h2>Enter Password to View Pishu's Story 💖</h2>
+    <input type="password" id="password-input" placeholder="Enter password" />
+    <button onclick="checkPassword()">Unlock</button>
+  </div>
+
+  <div class="heart-container" onclick="openStory()">
+    <img src="https://i.imgur.com/KmcMxwh.jpeg" alt="Open Letter" width="150" />
+  </div>
+
+  <div class="hidden-content">
+    <h1>Welcome to Pishu's Story ❤️</h1>
+    <p>This website is dedicated to our love and all our beautiful memories together.</p>
+    <h2>Our Special Memories</h2>
+    <ul>
+      <li><strong>23rd August 2021 - The Beginning of Us:</strong> We came together on this magical day at 6:57 PM. I had a crush on Piyu since childhood, from 5th standard, and she has always been the best. On this day, she confessed her feelings to me on Snapchat, and it was the most unforgettable moment of my life. I loved it, and from that moment, our beautiful journey began. But being the introverted guy I am, I simply replied with an 'OK' and a red heart. She still understood my feelings. ❤️</li>
+      <li><strong>31st August 2021 - My First 'I Love You':</strong> After a few troubling days, I finally gathered the courage to say 'I love you, Piyuji' for the first time and gifted her my first present. She loved it, and from then on, our journey became even more magical. We had countless moments of romance and fun together. 💖</li>
+      <li><strong>First Date - School Desk, 8 AM:</strong> Our first date was simple yet unforgettable. Sitting at our school desk, surrounded by the chirping of birds, especially the beautiful parrots, we shared a moment that felt like a scene from a love story. It was the start of something truly special. 🕊️💘</li>
+      <li><strong>Anniversary Celebration - Every Month on the 23rd:</strong> We celebrate our love every month on this special date, cherishing our journey and reliving our magical beginning. Every 23rd is a reminder of how deeply we love each other. 🎉❤️</li>
+      <li><strong>First Trip Together - 23rd September 2024:</strong> After four years of hustle, we finally met in Pune, in complete peace and happiness. From 4:27 PM to 7:00 PM, we had the most beautiful time together, cherishing every moment. It was a dream come true, filled with joy and love. ✨💑</li>
+      <li><strong>Countless Late-Night Talks:</strong> Every conversation brought us closer.</li>
+    </ul>
+    <img class="memory-img" src="https://i.imgur.com/uvnD5gh.jpeg" alt="Our Memory" />
+  </div>
 </body>
 </html>
