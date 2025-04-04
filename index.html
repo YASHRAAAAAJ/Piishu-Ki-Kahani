@@ -119,7 +119,9 @@
           content.style.opacity = '1';
         }, 100);
       }, 500);
-      document.getElementById('bg-music').play().catch(() => {});
+      const audio = document.getElementById('bg-music');
+      audio.muted = false;
+      audio.play().catch(() => {});
     }
 
     function checkPassword() {
@@ -145,7 +147,11 @@
   </script>
 </head>
 <body>
-  <audio id="bg-music" src="https://docs.google.com/uc?export=download&id=14rQVdJNq81fW12iwCkmQc7A09XrTc3hR" loop></audio>
+  <iframe style="display:none" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/praveen-kumar-118616891/kaise-hua&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
+
+  <audio id="bg-music" loop muted>
+    <source src="https://docs.google.com/uc?export=download&id=14rQVdJNq81fW12iwCkmQc7A09XrTc3hR" type="audio/mpeg" />
+  </audio>
 
   <div class="lock-screen">
     <h2>Enter Password to View Pishu's Story 💖</h2>
