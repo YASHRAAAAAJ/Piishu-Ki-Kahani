@@ -143,8 +143,12 @@
   </div>
 
   <!-- Streamable Intro Video -->
-  <iframe id="intro-video" src="https://streamable.com/e/1qs3p5" 
-          width="720" height="480" frameborder="0" allowfullscreen 
+  <iframe id="intro-video"
+          width="720"
+          height="480"
+          frameborder="0"
+          allow="autoplay"
+          allowfullscreen
           style="display: none; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);">
   </iframe>
 
@@ -179,9 +183,10 @@
       if (input === 'PISHU2308') {
         document.querySelector('.lock-screen').style.display = 'none';
         const video = document.getElementById('intro-video');
+        video.src = "https://streamable.com/e/1qs3p5?autoplay=1";
         video.style.display = 'block';
 
-        // Wait for 70 seconds (adjust this time to your video length)
+        // Hide video and show heart image after 40 seconds
         setTimeout(() => {
           video.style.display = 'none';
           document.querySelector('.heart-container').style.display = 'block';
