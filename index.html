@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pishu's Story</title>
+  <title>Meri Pyari Mauuuuuuuu ❤️</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #ffebf0;
+      background-color: #fff0f5;
       color: #333;
       margin: 0;
       padding: 20px;
       overflow-x: hidden;
     }
+
     .lock-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: rgba(255, 255, 255, 0.95);
       z-index: 9999;
       display: flex;
@@ -26,35 +25,55 @@
       justify-content: center;
       flex-direction: column;
     }
-    .lock-screen input {
+
+    .lock-screen input, .lock-screen button {
       padding: 10px;
       font-size: 16px;
       border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .lock-screen input {
       border: 1px solid #ccc;
     }
+
     .lock-screen button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      font-size: 16px;
       background-color: #ff4d6d;
       color: white;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
     }
-    .heart-container {
-      position: absolute;
+
+    #intro-video {
+      width: 720px;
+      height: 480px;
+      object-fit: contain;
+      background-color: black;
+      display: none;
+      position: fixed;
       top: 50%;
       left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .heart-container {
+      position: absolute;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       cursor: pointer;
       transition: transform 0.5s ease, opacity 0.5s ease;
       z-index: 999;
       text-align: center;
+      display: none;
     }
+
     .heart-container:hover {
       transform: translate(-50%, -50%) scale(1.1);
     }
+
     .hidden-content {
       display: none;
       max-width: 800px;
@@ -66,32 +85,33 @@
       opacity: 0;
       transition: opacity 1s ease;
     }
-    h1 {
+
+    h1, h2 {
       color: #ff4d4d;
     }
-    h2 {
-      color: #ff4d4d;
-    }
-    p {
+
+    p, li {
       font-size: 18px;
     }
+
     ul {
       text-align: left;
     }
+
     li {
       margin: 10px 0;
-      font-size: 17px;
     }
+
     img.memory-img {
       width: 100%;
       max-width: 300px;
-      margin-top: 20px;
+      margin: 20px auto;
+      display: block;
       border-radius: 10px;
       box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      cursor: pointer;
     }
+
     .floating-heart {
       position: absolute;
       width: 20px;
@@ -101,14 +121,74 @@
       animation: float 5s infinite ease-in-out;
       opacity: 0.3;
     }
+
     @keyframes float {
       0% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-20px) scale(1.2); }
       100% { transform: translateY(0) scale(1); }
     }
   </style>
+</head>
+<body>
+
+  <!-- Background music (not playing until inside content) -->
+  <iframe id="bg-music" width="0" height="0" allow="autoplay" style="display:none"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/praveen-kumar-118616891/kaise-hua&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
+  </iframe>
+
+  <!-- Lock screen -->
+  <div class="lock-screen">
+    <h2>Enter Password to Unlock Miss Piyu"s Birthday Surprise 💖</h2>
+    <input type="password" id="password-input" placeholder="Enter password" />
+    <button onclick="checkPassword()">Unlock</button>
+  </div>
+
+  <!-- Intro video -->
+  <video id="intro-video" autoplay controls>
+    <source src="VID-20240504-WA0020.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Heart click image -->
+  <div class="heart-container" onclick="openStory()">
+    <img src="https://i.imgur.com/KmcMxwh.jpeg" alt="Tap to Begin" width="150" />
+  </div>
+
+  <!-- Hidden message content -->
+  <div class="hidden-content">
+    <h1>Happy 19th Birthday, Meri Pyari Mauuuuuuuuuuuuu ❤️🎉</h1>
+    <p>Tum meri duniya ho baby! Aane wala saal ekdum mast ho tumhare liye! Har din khushi bhara ho. 🎂✨</p>
+    <ul>
+      <li>Tumhara Smile sabse pyaara hai. 😍</li>
+      <li>Tumhare bina sab kuch adhoora lagta hai. 💕</li>
+      <li>Love you sooooo much baby Piyu! 💌</li>
+      <li>Tum meri zindagi ki sabse khaas insan ho. 🌹</li>
+      <li>Tu meri jaan hai, meri Mauuuuuu 🥰</li>
+      <li>Aaj ka din sirf tumhare naam! 💝</li>
+      <li>Happy wala Birthday once again meri Piyuuu Baby 🎉🎂</li>
+    </ul>
+    <img class="memory-img" src="https://i.imgur.com/uvnD5gh.jpeg" alt="Cute Memory" onclick="showFinalMessage()" />
+    <img class="memory-img" src="https://i.imgur.com/fZJ8Uij.jpeg" alt="Another Lovely Pic" />
+  </div>
+
   <script src="https://w.soundcloud.com/player/api.js"></script>
   <script>
+    function checkPassword() {
+      const input = document.getElementById('password-input').value;
+      if (input === 'PISHU2308') {
+        document.querySelector('.lock-screen').style.display = 'none';
+        const video = document.getElementById('intro-video');
+        video.style.display = 'block';
+        video.play();
+        video.onended = () => {
+          video.style.display = 'none';
+          document.querySelector('.heart-container').style.display = 'block';
+        }
+      } else {
+        alert('Wrong password! Try again.');
+      }
+    }
+
     function openStory() {
       const heart = document.querySelector('.heart-container');
       const content = document.querySelector('.hidden-content');
@@ -126,13 +206,26 @@
       }, 500);
     }
 
-    function checkPassword() {
-      const input = document.getElementById('password-input').value;
-      if (input === 'PISHU2308') {
-        document.querySelector('.lock-screen').style.display = 'none';
-      } else {
-        alert('Wrong password! Try again.');
-      }
+    function showFinalMessage() {
+      alert(`🎂 Happy Birthday My Love, My Piyu ❤️✨
+
+Meri jaan, meri duniya, meri sabse special insaan 💕
+Tujhse pyaara koi nahi, tu meri aankhon ka noor hai 🌟
+Tu har roz aur bhi zyada shundarii & shundariiiiiiiii hoti ja rahi hai 😍🌸
+Day by day tu aur bhi gorgeous, charming, and divine lagti hai ✨💫
+💘 Teri aankhon mein bas jaane ka mann karta hai 💘
+Tera chehra dekh ke saara stress chala jaata hai 🌈
+Tu itni hardworking hai, caring hai, sensitive hai 🫶
+Itna pyara dil hai tera ki bas dekh ke pighal jaaye koi bhi 💗
+Mauu har roz proud feel karta hai ki uski life mein Piyu jaisi princess hai 👑
+
+💌 I Love You Babyp 💌
+Tu meri inspiration hai, tu mera motivation hai 🌟
+Tere saath har lamha magical lagta hai 🪄
+Aur har memory hum dono ki ek sweet si kahani ban jaye 📖💑
+
+🥳 I LOVE YOU SOOOOOOOOOOOOO MUCH 🥳
+Stay blessed 🌺 stay glowing 💖 and keep ruling my heart 👑`);
     }
 
     window.onload = () => {
@@ -147,35 +240,6 @@
       }
     }
   </script>
-</head>
-<body>
-  <iframe id="bg-music" width="0" height="0" allow="autoplay" style="display:none"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/praveen-kumar-118616891/kaise-hua&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
-  </iframe>
 
-  <div class="lock-screen">
-    <h2>Enter Password to View Pishu's Story 💖</h2>
-    <input type="password" id="password-input" placeholder="Enter password" />
-    <button onclick="checkPassword()">Unlock</button>
-  </div>
-
-  <div class="heart-container" onclick="openStory()">
-    <img src="https://i.imgur.com/KmcMxwh.jpeg" alt="Open Letter" width="150" style="display: block; margin: 0 auto;" />
-  </div>
-
-  <div class="hidden-content">
-    <h1>Welcome to Pishu's Story ❤️</h1>
-    <p>This website is dedicated to our love and all our beautiful memories together.</p>
-    <h2>Our Special Memories</h2>
-    <ul>
-      <li><strong>23rd August 2021 - The Beginning of Us:</strong> We came together on this magical day at 6:57 PM. I had a crush on Piyu since childhood, from 5th standard, and she has always been the best. On this day, she confessed her feelings to me on Snapchat, and it was the most unforgettable moment of my life. I loved it, and from that moment, our beautiful journey began. But being the introverted guy I am, I simply replied with an 'OK' and a red heart. She still understood my feelings. ❤️</li>
-      <li><strong>31st August 2021 - My First 'I Love You':</strong> After a few troubling days, I finally gathered the courage to say 'I love you, Piyuji' for the first time and gifted her my first present. She loved it, and from then on, our journey became even more magical. We had countless moments of romance and fun together. 💖</li>
-      <li><strong>First Date - School Desk, 8 AM:</strong> Our first date was simple yet unforgettable. Sitting at our school desk, surrounded by the chirping of birds, especially the beautiful parrots, we shared a moment that felt like a scene from a love story. It was the start of something truly special. 🕊️💘</li>
-      <li><strong>Anniversary Celebration - Every Month on the 23rd:</strong> We celebrate our love every month on this special date, cherishing our journey and reliving our magical beginning. Every 23rd is a reminder of how deeply we love each other. 🎉❤️</li>
-      <li><strong>First Trip Together - 23rd September 2024:</strong> After four years of hustle, we finally met in Pune, in complete peace and happiness. From 4:27 PM to 7:00 PM, we had the most beautiful time together, cherishing every moment. It was a dream come true, filled with joy and love. ✨💑</li>
-      <li><strong>Countless Late-Night Talks:</strong> Every conversation brought us closer.</li>
-    </ul>
-    <img class="memory-img" src="https://i.imgur.com/uvnD5gh.jpeg" alt="Our Memory" />
-  </div>
 </body>
 </html>
