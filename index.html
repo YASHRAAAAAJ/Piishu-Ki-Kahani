@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -142,15 +142,11 @@
     <button onclick="checkPassword()">Unlock</button>
   </div>
 
-  <!-- Streamable Intro Video -->
-  <iframe id="intro-video"
-          width="720"
-          height="480"
-          frameborder="0"
-          allow="autoplay"
-          allowfullscreen
-          style="display: none; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);">
-  </iframe>
+  <!-- Intro video (custom video instead of streamable iframe) -->
+  <video id="intro-video" controls style="display: none;" playsinline>
+    <source src="intro.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <!-- Heart click image -->
   <div class="heart-container" onclick="openStory()">
@@ -182,15 +178,17 @@
       const input = document.getElementById('password-input').value;
       if (input === 'PISHU2308') {
         document.querySelector('.lock-screen').style.display = 'none';
-        const video = document.getElementById('intro-video');
-        video.src = "https://streamable.com/e/1qs3p5?autoplay=1";
-        video.style.display = 'block';
 
-        // Hide video and show heart image after 40 seconds
-        setTimeout(() => {
+        const video = document.getElementById('intro-video');
+        video.style.display = 'block';
+        video.play();
+
+        video.addEventListener('ended', () => {
           video.style.display = 'none';
+          video.pause();
+          video.currentTime = 0;
           document.querySelector('.heart-container').style.display = 'block';
-        }, 70000);
+        });
       } else {
         alert('Wrong password! Try again.');
       }
