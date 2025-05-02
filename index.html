@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -47,7 +47,6 @@
     #intro-video {
       width: 720px;
       height: 480px;
-      object-fit: contain;
       background-color: black;
       display: none;
       position: fixed;
@@ -131,7 +130,7 @@
 </head>
 <body>
 
-  <!-- Background music (not playing until inside content) -->
+  <!-- Background music -->
   <iframe id="bg-music" width="0" height="0" allow="autoplay" style="display:none"
     src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/praveen-kumar-118616891/kaise-hua&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
   </iframe>
@@ -143,11 +142,11 @@
     <button onclick="checkPassword()">Unlock</button>
   </div>
 
-  <!-- Intro video -->
-  <video id="intro-video" autoplay controls>
-    <source src="VID-20240504-WA0020.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <!-- Streamable Intro Video -->
+  <iframe id="intro-video" src="https://streamable.com/e/1qs3p5" 
+          width="720" height="480" frameborder="0" allowfullscreen 
+          style="display: none; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);">
+  </iframe>
 
   <!-- Heart click image -->
   <div class="heart-container" onclick="openStory()">
@@ -165,11 +164,10 @@
       <li>Tum meri zindagi ki sabse khaas insan ho. 🌹</li>
       <li>Tu meri jaan hai, meri Mauuuuuu 🥰</li>
       <li>Aaj ka din sirf tumhare naam! 💝</li>
-      <li>I LOVE YOU SOOOOOOOOOOOOO MUCH 
-🎉 Happy Birthday once again meri JAAAAAAAN 🎉
-Stay blessed 🌺 stay glowing 💖 and keep ruling my heart 👑
-Tu meri zindagi ka sabse bada gift hai 🎁
-Aur main hamesha thankful hoon ki tu meri hai 💞</li>
+      <li>I LOVE YOU SOOOOOOOOOOOOO MUCH 🎉 Happy Birthday once again meri JAAAAAAAN 🎉
+          Stay blessed 🌺 stay glowing 💖 and keep ruling my heart 👑
+          Tu meri zindagi ka sabse bada gift hai 🎁
+          Aur main hamesha thankful hoon ki tu meri hai 💞</li>
     </ul>
     <img class="memory-img" src="https://i.imgur.com/uvnD5gh.jpeg" alt="Cute Memory" onclick="showFinalMessage()" />
     <img class="memory-img" src="https://i.imgur.com/fZJ8Uij.jpeg" alt="Another Lovely Pic" />
@@ -183,11 +181,12 @@ Aur main hamesha thankful hoon ki tu meri hai 💞</li>
         document.querySelector('.lock-screen').style.display = 'none';
         const video = document.getElementById('intro-video');
         video.style.display = 'block';
-        video.play();
-        video.onended = () => {
+
+        // Wait for 70 seconds (adjust this time to your video length)
+        setTimeout(() => {
           video.style.display = 'none';
           document.querySelector('.heart-container').style.display = 'block';
-        }
+        }, 70000);
       } else {
         alert('Wrong password! Try again.');
       }
@@ -230,10 +229,10 @@ Aur hum dono ki bond aur bhi strong ho jaaye
 Tu meri pyaari si calmness bhi hai aur crazy si excitement bhi 
 Mere har ache bure din ka hissa sirf tu hi hai 
 Mauu ki jaan, mauu ka ladla, sab kuch tu hi hai 💝
-Tere birthday pe itna kehna hai —
+Tere birthday pe itna kehna hai — 
 Ki duniya ke saare pyaar, saari khushiyan teri ho jayein 
 Tere chehre pe hamesha ye beautiful si smile bani rahe 
-Aur tu kabhi bhi akeli feel na kare — kyunki mauu humesha tere saath hai `);
+Aur tu kabhi bhi akeli feel na kare — kyunki mauu humesha tere saath hai`);
     }
 
     window.onload = () => {
