@@ -1,252 +1,242 @@
-!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meri Pyari Mauuuuuuuu ❤️</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fff0f5;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      overflow-x: hidden;
-    }
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Meri Pyari Mauuuuuuuu ❤️</title>  
+  <style>  
+    body {  
+      font-family: 'Arial', sans-serif;  
+      background-color: #fff0f5;  
+      color: #333;  
+      margin: 0;  
+      padding: 20px;  
+      overflow-x: hidden;  
+    }  .lock-screen {  
+  position: fixed;  
+  top: 0; left: 0;  
+  width: 100vw; height: 100vh;  
+  background: rgba(255, 255, 255, 0.95);  
+  z-index: 9999;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  flex-direction: column;  
+}  
 
-    .lock-screen {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(255, 255, 255, 0.95);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
+.lock-screen input, .lock-screen button {  
+  padding: 10px;  
+  font-size: 16px;  
+  border-radius: 5px;  
+  margin-top: 10px;  
+}  
 
-    .lock-screen input, .lock-screen button {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
+.lock-screen input {  
+  border: 1px solid #ccc;  
+}  
 
-    .lock-screen input {
-      border: 1px solid #ccc;
-    }
+.lock-screen button {  
+  background-color: #ff4d6d;  
+  color: white;  
+  border: none;  
+  cursor: pointer;  
+}  
 
-    .lock-screen button {
-      background-color: #ff4d6d;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+#intro-video {  
+  width: 720px;  
+  height: 480px;  
+  background-color: black;  
+  display: none;  
+  position: fixed;  
+  top: 50%;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
+  z-index: 9998;  
+  border-radius: 15px;  
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);  
+}  
 
-    #intro-video {
-      width: 720px;
-      height: 480px;
-      background-color: black;
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9998;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
+.heart-container {  
+  position: absolute;  
+  top: 50%; left: 50%;  
+  transform: translate(-50%, -50%);  
+  cursor: pointer;  
+  transition: transform 0.5s ease, opacity 0.5s ease;  
+  z-index: 999;  
+  text-align: center;  
+  display: none;  
+}  
 
-    .heart-container {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      z-index: 999;
-      text-align: center;
-      display: none;
-    }
+.heart-container:hover {  
+  transform: translate(-50%, -50%) scale(1.1);  
+}  
 
-    .heart-container:hover {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
+.hidden-content {  
+  display: none;  
+  max-width: 800px;  
+  margin: 50px auto;  
+  padding: 20px;  
+  background: white;  
+  border-radius: 10px;  
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);  
+  opacity: 0;  
+  transition: opacity 1s ease;  
+}  
 
-    .hidden-content {
-      display: none;
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
+h1, h2 {  
+  color: #ff4d4d;  
+}  
 
-    h1, h2 {
-      color: #ff4d4d;
-    }
+p, li {  
+  font-size: 18px;  
+}  
 
-    p, li {
-      font-size: 18px;
-    }
+ul {  
+  text-align: left;  
+}  
 
-    ul {
-      text-align: left;
-    }
+li {  
+  margin: 10px 0;  
+}  
 
-    li {
-      margin: 10px 0;
-    }
+img.memory-img {  
+  width: 100%;  
+  max-width: 300px;  
+  margin: 20px auto;  
+  display: block;  
+  border-radius: 10px;  
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);  
+  cursor: pointer;  
+}  
 
-    img.memory-img {
-      width: 100%;
-      max-width: 300px;
-      margin: 20px auto;
-      display: block;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-    }
+.floating-heart {  
+  position: absolute;  
+  width: 20px;  
+  height: 20px;  
+  background: red;  
+  clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 70%, 20% 100%, 0% 30%);  
+  animation: float 5s infinite ease-in-out;  
+  opacity: 0.3;  
+}  
 
-    .floating-heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 70%, 20% 100%, 0% 30%);
-      animation: float 5s infinite ease-in-out;
-      opacity: 0.3;
-    }
+@keyframes float {  
+  0% { transform: translateY(0) scale(1); }  
+  50% { transform: translateY(-20px) scale(1.2); }  
+  100% { transform: translateY(0) scale(1); }  
+}
 
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-20px) scale(1.2); }
-      100% { transform: translateY(0) scale(1); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Background music (starts only after video + image click) -->
-  <iframe id="bg-music" width="0" height="0" allow="autoplay" style="display:none"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/praveen-kumar-118616891/kaise-hua&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">
-  </iframe>
-
-  <!-- Lock screen -->
-  <div class="lock-screen">
-    <h2>Enter Password to Unlock Miss Piyu's Birthday Surprise 💖</h2>
-    <input type="password" id="password-input" placeholder="Enter password" />
-    <button onclick="checkPassword()">Unlock</button>
-  </div>
-
-  <!-- Intro Video -->
-  <video id="intro-video" autoplay muted>
-    <source src="your-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Heart image -->
-  <div class="heart-container" onclick="openStory()">
-    <img src="https://i.imgur.com/KmcMxwh.jpeg" alt="Tap to Begin" width="150" />
-  </div>
-
-  <!-- Hidden message content -->
-  <div class="hidden-content">
-    <h1>Happy 19th Birthday, Meri Pyari Mauuuuuuuuuuuuu ❤️🎉</h1>
-    <p>Tum meri duniya ho baby! Aane wala saal ekdum mast ho tumhare liye! Har din khushi bhara ho. 🎂✨</p>
-    <ul>
-      <li>Tumhara Smile sabse pyaara hai. 😍</li>
-      <li>Tumhare bina sab kuch adhoora lagta hai. 💕</li>
-      <li>Love you sooooo much baby Piyu! 💌</li>
-      <li>Tum meri zindagi ki sabse khaas insan ho. 🌹</li>
-      <li>Tu meri jaan hai, meri Mauuuuuu 🥰</li>
-      <li>Aaj ka din sirf tumhare naam! 💝</li>
-      <li>I LOVE YOU SOOOOOOOOOOOOO MUCH 🎉 Happy Birthday once again meri JAAAAAAAN 🎉
-          Stay blessed 🌺 stay glowing 💖 and keep ruling my heart 👑
-          Tu meri zindagi ka sabse bada gift hai 🎁
-          Aur main hamesha thankful hoon ki tu meri hai 💞</li>
-    </ul>
-    <img class="memory-img" src="https://i.imgur.com/uvnD5gh.jpeg" alt="Cute Memory" onclick="showFinalMessage()" />
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://w.soundcloud.com/player/api.js"></script>
-  <script>
-    function checkPassword() {
-      const input = document.getElementById('password-input').value;
-      const video = document.getElementById('intro-video');
-      if (input === 'PISHU2308') {
-        document.querySelector('.lock-screen').style.display = 'none';
-        video.style.display = 'block';
-        video.play();
-
-        video.onended = () => {
-          video.style.display = 'none';
-          document.querySelector('.heart-container').style.display = 'block';
-        };
-      } else {
-        alert('Wrong password! Try again.');
-      }
-    }
-
-    function openStory() {
-      const heart = document.querySelector('.heart-container');
-      const content = document.querySelector('.hidden-content');
-      heart.style.opacity = '0';
-      setTimeout(() => {
-        heart.style.display = 'none';
-        content.style.display = 'block';
-        setTimeout(() => {
-          content.style.opacity = '1';
-          const iframeElement = document.getElementById('bg-music');
-          const widget = SC.Widget(iframeElement);
-          widget.setVolume(50);
-          widget.play();
-        }, 100);
-      }, 500);
-    }
-
-    function showFinalMessage() {
-      alert(`Meri jaan❤️, meri duniya, meri sabse special insaan 
-Tujhse pyaara koi nahi, tu meri aankhon ka noor hai 
-Tu har roz aur bhi zyada shundarii & shundariiiiiiiii hoti ja rahi hai
-Day by day tu aur bhi gorgeous, charming, and divine lagti hai
-Tera chehra dekh ke saara stress chala jaata hai 
-Tu itni hardworking hai, caring hai, sensitive hai
-Itna pyara dil hai tera ki bas dekh ke pighal jaaye koi bhi 
-Mauu har roz proud feel karta hai ki uski life mein Piyu jaisi princess hai
-Aane wala saal tera sabse productive ho, sabse peaceful ho 
-Jitni mehnat tu karti hai uska double reward mile tujhe 
-Har sapna pura ho, har wish sach ho 
-Aur har memory hum dono ki ek sweet si kahani ban jaye 
-Let’s make this year the most memorable one 
-Har weekend special ho, har choti choti date epic ho
-Aur hum dono ki bond aur bhi strong ho jaaye 
-🫶PISHU FOREVER, TOGETHER ALWAYS 🫶
-Tu meri pyaari si calmness bhi hai aur crazy si excitement bhi 
-Mere har ache bure din ka hissa sirf tu hi hai 
-Mauu ki jaan, mauu ka ladla, sab kuch tu hi hai 💝
-Tere birthday pe itna kehna hai — 
-Ki duniya ke saare pyaar, saari khushiyan teri ho jayein 
-Tere chehre pe hamesha ye beautiful si smile bani rahe 
-Aur tu kabhi bhi akeli feel na kare — kyunki mauu humesha tere saath hai`);
-    }
-
-    window.onload = () => {
-      for (let i = 0; i < 30; i++) {
-        const heart = document.createElement('div');
-        heart.classList.add('floating-heart');
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.animationDuration = (3 + Math.random() * 5) + 's';
-        heart.style.opacity = Math.random() * 0.4 + 0.2;
-        document.body.appendChild(heart);
-      }
-    }
-  </script>
-
-</body>
-</html>
+  </style>  
+</head>  
+<body>    <!-- Background music (starts only after video + image click) -->    <iframe id="bg-music" width="0" height="0" allow="autoplay" style="display:none"  
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/praveen-kumar-118616891/kaise-hua&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&visual=false">  
+  </iframe>    <!-- Lock screen -->    <div class="lock-screen">  
+    <h2>Enter Password to Unlock Miss Piyu's Birthday Surprise 💖</h2>  
+    <input type="password" id="password-input" placeholder="Enter password" />  
+    <button onclick="checkPassword()">Unlock</button>  
+  </div>    <!-- Intro Video -->    <iframe id="intro-video"  
+          width="720"  
+          height="480"  
+          frameborder="0"  
+          allow="autoplay"  
+          allowfullscreen>  
+  </iframe>    <!-- Heart image -->    <div class="heart-container" onclick="openStory()">  
+    <img src="https://i.imgur.com/KmcMxwh.jpeg" alt="Tap to Begin" width="150" />  
+  </div>    <!-- Hidden message content -->    <div class="hidden-content">  
+    <h1>Happy 19th Birthday, Meri Pyari Mauuuuuuuuuuuuu ❤️🎉</h1>  
+    <p>Tum meri duniya ho baby! Aane wala saal ekdum mast ho tumhare liye! Har din khushi bhara ho. 🎂✨</p>  
+    <ul>  
+      <li>Tumhara Smile sabse pyaara hai. 😍</li>  
+      <li>Tumhare bina sab kuch adhoora lagta hai. 💕</li>  
+      <li>Love you sooooo much baby Piyu! 💌</li>  
+      <li>Tum meri zindagi ki sabse khaas insan ho. 🌹</li>  
+      <li>Tu meri jaan hai, meri Mauuuuuu 🥰</li>  
+      <li>Aaj ka din sirf tumhare naam! 💝</li>  
+      <li>I LOVE YOU SOOOOOOOOOOOOO MUCH 🎉 Happy Birthday once again meri JAAAAAAAN 🎉  
+          Stay blessed 🌺 stay glowing 💖 and keep ruling my heart 👑  
+          Tu meri zindagi ka sabse bada gift hai 🎁  
+          Aur main hamesha thankful hoon ki tu meri hai 💞</li>  
+    </ul>  
+    <img class="memory-img" src="https://i.imgur.com/uvnD5gh.jpeg" alt="Cute Memory" onclick="showFinalMessage()" />  
+  </div>    <!-- Scripts -->    <script src="https://w.soundcloud.com/player/api.js"></script>    <script>  
+    let videoPlayed = false;  
+  
+    function checkPassword() {  
+      const input = document.getElementById('password-input').value;  
+      const video = document.getElementById('intro-video');  
+      if (input === 'PISHU2308') {  
+        document.querySelector('.lock-screen').style.display = 'none';  
+  
+        if (!videoPlayed) {  
+          video.src = "https://streamable.com/e/1qs3p5?autoplay=1";  
+          video.style.display = 'block';  
+          videoPlayed = true;  
+  
+          setTimeout(() => {  
+            video.style.display = 'none';  
+            video.src = ""; // Stop video & sound  
+            document.querySelector('.heart-container').style.display = 'block';  
+          }, 70000);  
+        } else {  
+          // Directly show heart if video already played  
+          document.querySelector('.heart-container').style.display = 'block';  
+        }  
+      } else {  
+        alert('Wrong password! Try again.');  
+      }  
+    }  
+  
+    function openStory() {  
+      const heart = document.querySelector('.heart-container');  
+      const content = document.querySelector('.hidden-content');  
+      heart.style.opacity = '0';  
+      setTimeout(() => {  
+        heart.style.display = 'none';  
+        content.style.display = 'block';  
+        setTimeout(() => {  
+          content.style.opacity = '1';  
+          const iframeElement = document.getElementById('bg-music');  
+          const widget = SC.Widget(iframeElement);  
+          widget.setVolume(50);  
+          widget.play();  
+        }, 100);  
+      }, 500);  
+    }  
+  
+    function showFinalMessage() {  
+      alert(`Meri jaan❤️, meri duniya, meri sabse special insaan   
+Tujhse pyaara koi nahi, tu meri aankhon ka noor hai   
+Tu har roz aur bhi zyada shundarii & shundariiiiiiiii hoti ja rahi hai  
+Day by day tu aur bhi gorgeous, charming, and divine lagti hai  
+Tera chehra dekh ke saara stress chala jaata hai   
+Tu itni hardworking hai, caring hai, sensitive hai  
+Itna pyara dil hai tera ki bas dekh ke pighal jaaye koi bhi   
+Mauu har roz proud feel karta hai ki uski life mein Piyu jaisi princess hai  
+Aane wala saal tera sabse productive ho, sabse peaceful ho   
+Jitni mehnat tu karti hai uska double reward mile tujhe   
+Har sapna pura ho, har wish sach ho   
+Aur har memory hum dono ki ek sweet si kahani ban jaye   
+Let’s make this year the most memorable one   
+Har weekend special ho, har choti choti date epic ho  
+Aur hum dono ki bond aur bhi strong ho jaaye   
+🫶PISHU FOREVER, TOGETHER ALWAYS 🫶  
+Tu meri pyaari si calmness bhi hai aur crazy si excitement bhi   
+Mere har ache bure din ka hissa sirf tu hi hai   
+Mauu ki jaan, mauu ka ladla, sab kuch tu hi hai 💝  
+Tere birthday pe itna kehna hai —   
+Ki duniya ke saare pyaar, saari khushiyan teri ho jayein   
+Tere chehre pe hamesha ye beautiful si smile bani rahe   
+Aur tu kabhi bhi akeli feel na kare — kyunki mauu humesha tere saath hai`);  
+    }  
+  
+    window.onload = () => {  
+      for (let i = 0; i < 30; i++) {  
+        const heart = document.createElement('div');  
+        heart.classList.add('floating-heart');  
+        heart.style.left = Math.random() * 100 + 'vw';  
+        heart.style.top = Math.random() * 100 + 'vh';  
+        heart.style.animationDuration = (3 + Math.random() * 5) + 's';  
+        heart.style.opacity = Math.random() * 0.4 + 0.2;  
+        document.body.appendChild(heart);  
+      }  
+    }  
+  </script>  </body>  
+</html> ... what's the error in this ?? Video is not working 
