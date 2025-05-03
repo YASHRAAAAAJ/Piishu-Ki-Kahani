@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -143,13 +143,10 @@
   </div>
 
   <!-- Intro Video -->
-  <iframe id="intro-video"
-          width="720"
-          height="480"
-          frameborder="0"
-          allow="autoplay"
-          allowfullscreen>
-  </iframe>
+  <video id="intro-video" autoplay muted>
+    <source src="your-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <!-- Heart image -->
   <div class="heart-container" onclick="openStory()">
@@ -178,28 +175,18 @@
   <!-- Scripts -->
   <script src="https://w.soundcloud.com/player/api.js"></script>
   <script>
-    let videoPlayed = false;
-
     function checkPassword() {
       const input = document.getElementById('password-input').value;
       const video = document.getElementById('intro-video');
       if (input === 'PISHU2308') {
         document.querySelector('.lock-screen').style.display = 'none';
+        video.style.display = 'block';
+        video.play();
 
-        if (!videoPlayed) {
-          video.src = "https://streamable.com/e/1qs3p5?autoplay=1";
-          video.style.display = 'block';
-          videoPlayed = true;
-
-          setTimeout(() => {
-            video.style.display = 'none';
-            video.src = ""; // Stop video & sound
-            document.querySelector('.heart-container').style.display = 'block';
-          }, 70000);
-        } else {
-          // Directly show heart if video already played
+        video.onended = () => {
+          video.style.display = 'none';
           document.querySelector('.heart-container').style.display = 'block';
-        }
+        };
       } else {
         alert('Wrong password! Try again.');
       }
